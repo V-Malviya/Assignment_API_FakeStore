@@ -1,15 +1,18 @@
 package com.restapi.fakestoreapiproxy.services;
 
 import com.restapi.fakestoreapiproxy.dtos.ProductDto;
+import com.restapi.fakestoreapiproxy.models.Product;
+
+import java.util.List;
 
 public interface ProductService {
-    String getAllProducts();
+    ProductDto[] getAllProducts();
 
-    String getProductById(long productId);
+    Product getProductById(long productId);
 
-    String addNewProduct(ProductDto productDto);
+    Product addNewProduct(ProductDto productDto);
 
-    String updateProduct(long productId);
+    Product updateProduct(long productId,ProductDto details);
 
-    String deleteProduct(long productId);
+    boolean deleteProduct(long productId);
 }
