@@ -1,6 +1,8 @@
 package com.restapi.fakestoreapiproxy.services;
 
+import com.restapi.fakestoreapiproxy.clients.FakeStoreClient.FakeStore;
 import com.restapi.fakestoreapiproxy.models.Category;
+import com.restapi.fakestoreapiproxy.models.Product;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -8,33 +10,35 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FakeStoreCategoryService implements CategoryService {
     RestTemplateBuilder restTemplateBuilder;
-
-    public FakeStoreCategoryService(RestTemplateBuilder restTemplateBuilder) {
+    FakeStore fakeStore;
+    public FakeStoreCategoryService(RestTemplateBuilder restTemplateBuilder,FakeStore fakeStore) {
         this.restTemplateBuilder = restTemplateBuilder;
+        this.fakeStore=fakeStore;
     }
 
     @Override
-    public List<Category> getAllCategories()
+    public Optional<List<Category>> getAllCategories()
     {
-        RestTemplate restTemplate= restTemplateBuilder.build();
-        ResponseEntity<String[]> list=restTemplate
-                .getForEntity("https://fakestoreapi.com/products/categories",String[].class);
-        List<Category> ansList=new ArrayList<>();
-        for(String s:list.getBody())
+        List<Category> categoryList=fakeStore.getAllCategory();
+        if(categoryList.isEmpty())
         {
-            Category category=new Category();
-            category.setName(s);
-            ansList.add(category);
+            return Optional.empty();
         }
-        return ansList;
+        return Optional.of(categoryList);
     }
     @Override
-    public String getAllProductsInCategory(String category)
+    public Optional<List<Product>> getAllProductsInCategory(String category)
     {
-        return "Return List of all products in category :"+category;
+        List<Product> list=fakeStore.getProductsInSpecificCategory(category);
+        if(list.isEmpty())
+        {
+            return Optional.empty();
+        }
+        return Optional.of(list);
     }
 }

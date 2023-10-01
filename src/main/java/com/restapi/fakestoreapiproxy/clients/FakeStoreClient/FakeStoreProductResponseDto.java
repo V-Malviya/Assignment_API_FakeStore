@@ -1,18 +1,17 @@
-package com.restapi.fakestoreapiproxy.dtos;
+package com.restapi.fakestoreapiproxy.clients.FakeStoreClient;
 
-import com.restapi.fakestoreapiproxy.models.Category;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter@ToString
-public class ProductDto {
+public class FakeStoreProductResponseDto {
     private long id;
     private String title;
     private double price;
     private String description;
-    private String image;
     private String category;
+    private String image;
     private RatingDto rating;
 }

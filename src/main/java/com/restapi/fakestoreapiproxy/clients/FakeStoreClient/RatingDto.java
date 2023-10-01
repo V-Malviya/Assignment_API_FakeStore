@@ -1,4 +1,4 @@
-package com.restapi.fakestoreapiproxy.dtos;
+package com.restapi.fakestoreapiproxy.clients.FakeStoreClient;
 
 import lombok.Getter;
 import lombok.Setter;
