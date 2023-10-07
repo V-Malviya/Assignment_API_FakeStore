@@ -1,4 +1,4 @@
-package com.restapi.fakestoreapiproxy.models;
+package com.restapi.fakestoreapiproxy.inheritancePractice.Mapped_Table;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -6,16 +6,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-import java.util.Date;
 @Getter
 @Setter
+@ToString
 @MappedSuperclass
-public class BaseModel {
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private Date createdAt;
-    private Date LastUpdatedAt;
-    private boolean isDeleted;
+    private String name;
+    private String email;
 }
