@@ -1,8 +1,9 @@
-package com.restapi.fakestoreapiproxy.services;
+package com.restapi.fakestoreapiproxy.services.implementation;
 
 import com.restapi.fakestoreapiproxy.clients.FakeStoreClient.FakeStore;
 import com.restapi.fakestoreapiproxy.models.Category;
 import com.restapi.fakestoreapiproxy.models.Product;
+import com.restapi.fakestoreapiproxy.services.CategoryService;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class FakeStoreCategoryService implements CategoryService {
     RestTemplateBuilder restTemplateBuilder;
     FakeStore fakeStore;

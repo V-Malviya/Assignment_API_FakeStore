@@ -1,8 +1,9 @@
-package com.restapi.fakestoreapiproxy.services;
+package com.restapi.fakestoreapiproxy.services.implementation;
 
 import com.restapi.fakestoreapiproxy.clients.FakeStoreClient.FakeStore;
 import com.restapi.fakestoreapiproxy.clients.FakeStoreClient.FakeStoreProductResponseDto;
 import com.restapi.fakestoreapiproxy.models.Product;
+import com.restapi.fakestoreapiproxy.services.ProductService;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -14,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class FakeStoreProductService implements ProductService {
     private RestTemplateBuilder restTemplateBuilder;
     private FakeStore fakeStore;

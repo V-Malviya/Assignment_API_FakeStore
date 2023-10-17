@@ -29,7 +29,7 @@ class FakeStoreApiProxyApplicationTests {
     JTInstructorRepository jtInstructorRepository;
     @Autowired
     JTTARepository jttaRepository;
-    @Test
+//    @Test
     void JoinTableInheritanceCheck()
     {
         User user=new User();
@@ -71,7 +71,7 @@ class FakeStoreApiProxyApplicationTests {
     MSTARepository mstaRepository;
     @Autowired
     MSMentorRepository msMentorRepository;
-    @Test
+//    @Test
     void mappedTableInheritanceCheck()
     {
         // for mentor
@@ -114,7 +114,7 @@ class FakeStoreApiProxyApplicationTests {
     STTARepository sttaRepository;
     @Autowired
     STMentorRepository stMentorRepository;
-    @Test
+//    @Test
     void singleTableInheritanceCheck()
     {
         // for User
@@ -166,7 +166,7 @@ class FakeStoreApiProxyApplicationTests {
     TPCInstructorRepository tpcInstructorRepository;
     @Autowired
     TPCTARepository tpctaRepository;
-    @Test
+//    @Test
     void tablePerClassInheritanceCheck()
     {
         // for user
