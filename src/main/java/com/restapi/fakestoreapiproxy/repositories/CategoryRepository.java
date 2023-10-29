@@ -11,4 +11,6 @@ public interface CategoryRepository extends JpaRepository<Category,Long> {
     Category save(Category category);
     List<Category> findAll();
     Category findCategoryByName(String CategoryName);
+    @Query(value = "SELECT * FROM product p WHERE p.category_id IN (SELECT id FROM category WHERE name=:categoryName)",nativeQuery = true)
+    List<Product> productsInCategoryByName(String categoryName);
 }

@@ -1,9 +1,6 @@
 package com.restapi.fakestoreapiproxy.models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,6 +12,7 @@ public class Product extends BaseModel{
     private double price;
     private String description;
     private String imageUrl;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
     private Category category;
 }

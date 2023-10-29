@@ -9,8 +9,10 @@ import com.restapi.fakestoreapiproxy.models.Category;
 import com.restapi.fakestoreapiproxy.models.Product;
 import com.restapi.fakestoreapiproxy.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +27,7 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
-    ProductController(ProductService productService) {
+    ProductController(@Qualifier(value = "selfProductService") ProductService productService) {
         this.productService = productService;
     }
 
@@ -81,7 +83,7 @@ public class ProductController {
     throws NoProductFoundException{
         Optional<Product> optionalProduct = productService.updateProduct(productId, requestDtoToProduct( newDetails));
         if (optionalProduct.isEmpty()) {
-            throw new NoProductFoundException("Sorry unable to update product with id :"+productId);
+            throw new NoProductFoundException("Sorry unable to update product with id :"+productId+" as it doesn't exist");
         }
         ResponseEntity<ProductResponseDto> response = new ResponseEntity<>(productToResponseDto(optionalProduct.get()), HttpStatus.ACCEPTED);
         return response;
@@ -99,6 +101,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<Boolean> deleteProduct(@PathVariable("id") long productId) {
         boolean status = productService.deleteProduct(productId);
         ResponseEntity<Boolean> response;

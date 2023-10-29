@@ -19,15 +19,22 @@ public class SelfCategoryService implements CategoryService {
     @Override
     public Optional<List<Category>> getAllCategories() {
         List<Category> list=categoryRepository.findAll();
+        if(list.isEmpty())
+        {
+            return Optional.empty();
+        }
         return Optional.of(list);
-//        return Optional.empty();
     }
 
     @Override
     public Optional<List<Product>> getAllProductsInCategory(String category) {
-        List<Product> list=categoryRepository.findCategoryByName(category).getProducts();
 
-        return Optional.of(list);
+        Category category1=categoryRepository.findCategoryByName(category);     //findCategoryByName(category).getProducts();
+        if(category1==null)
+        {
+            return Optional.empty();
+        }
+        return Optional.of(category1.getProducts());
 //        return Optional.empty();
     }
 }

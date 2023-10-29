@@ -6,6 +6,7 @@ import com.restapi.fakestoreapiproxy.models.Category;
 import com.restapi.fakestoreapiproxy.models.Product;
 import com.restapi.fakestoreapiproxy.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ import java.util.Optional;
 public class CategoryController {
     private CategoryService categoryService;
     @Autowired
-    CategoryController(CategoryService categoryService)
+    CategoryController(@Qualifier(value = "selfCategoryService") CategoryService categoryService)
     {
         this.categoryService=categoryService;
     }
@@ -47,7 +48,7 @@ public class CategoryController {
     {
         Optional<List<Product>> optionalList=categoryService.getAllProductsInCategory(category);
         if (optionalList.isEmpty()) {
-            throw new NoProductFoundException("There are no product availbale in this "+category+" categories.");
+            throw new NoProductFoundException("There are no product available in this "+category+" categories.");
         }
         List<ProductResponseDto> productlist=new ArrayList<>();
         for(Product p:optionalList.get())

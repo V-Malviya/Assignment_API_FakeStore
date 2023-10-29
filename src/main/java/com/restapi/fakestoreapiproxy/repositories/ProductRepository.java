@@ -10,6 +10,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product,Long> {
      Product save(Product product);
      Product findProductById(Long id);
-//     Product updateById(Long id,Product details);
-     Product deleteProductById(Long id);
+     void deleteProductById(Long id);
+     boolean existsById(Long id);
 }
