@@ -14,7 +14,7 @@ import lombok.ToString;
 @DiscriminatorValue(value = "0")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String email;

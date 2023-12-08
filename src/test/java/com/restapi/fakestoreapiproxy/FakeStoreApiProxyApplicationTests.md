@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/*Change file extension to java and include inheritance folder to revert back changes*/
+
 @SpringBootTest
 class FakeStoreApiProxyApplicationTests {
     @Test

@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "TPC_TA")
+//@Entity(name = "TPC_TA")
 public class TA extends User{
     private double rating;
 }

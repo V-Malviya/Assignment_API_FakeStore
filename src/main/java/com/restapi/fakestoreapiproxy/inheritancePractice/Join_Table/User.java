@@ -12,7 +12,7 @@ import lombok.ToString;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // changing auto to Identity as jpa buddy unable to create user_seq table for it
     private long id;
     private String name;
     private String email;

@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "TPC_Instructor")
+//@Entity(name = "TPC_Instructor")
 public class Instructor extends User{
     private boolean isHandsome;
 }
